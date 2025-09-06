@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0e12;
+      --card: #151521;
+      --muted: #a3a3b2;
+      --text: #f4f4f7;
+      --accent1: #7c4dff;
+      --accent2: #00c2ff;
+      --accent3: #ff7ac6;
+      --grad: linear-gradient(135deg, var(--accent1), var(--accent2));
+      --radius: 16px;
+      --maxw: 1100px;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(28px, 5vw, 48px);
+    }
+
+    header p {
+      color: var(--muted);
+      margin: 10px 0 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--maxw);
+      margin: auto;
+      padding: 0 20px 60px;
+    }
+
+    .gallery {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: 30px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: var(--radius);
+      display: block;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+
+    footer {
+      padding: 30px 0;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>📸 Project Gallery</h1>
+    <p>A showcase of graphics works, packaging designs, logo etc.</p>
+  </header>
+
+  <div class="container">
+    <div class="gallery">
+      <img src="assets/graphics/IMG_20200924_211243.jpg" alt="Dashboard overview">
+      <img src="assets/graphics/IMG_20200924_211302.jpg" alt="Booking list screen">
+      <img src="assets/graphics/Group_1.png" alt="Add client screen">
+      <img src="assets/graphics/Group_2.png" alt="Reschedule screen">
+      <img src="assets/graphics/Group_3.png" alt="Reschedule screen">
+      <img src="assets/graphics/solution-suicide-01.jpg" alt="Reschedule screen">
+      <img src="assets/graphics/" alt="Reschedule screen">
+      <!-- Add more images as needed -->
+    </div>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Anshita. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

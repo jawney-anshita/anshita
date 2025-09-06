@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Case Study – Job Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0e12;
+      --card: #151521;
+      --muted: #a3a3b2;
+      --text: #f4f4f7;
+      --accent1: #7c4dff;
+      --accent2: #00c2ff;
+      --accent3: #ff7ac6;
+      --grad: linear-gradient(135deg, var(--accent1), var(--accent2));
+      --radius: 16px;
+      --maxw: 900px;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--maxw);
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    header {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 10px 0;
+      font-size: clamp(28px, 4vw, 42px);
+    }
+
+    header p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .hero-img {
+      margin: 30px 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .hero-img img {
+      width: 100%;
+      display: block;
+      border-radius: var(--radius);
+    }
+
+    section {
+      padding: 50px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    h2 {
+      font-size: 24px;
+      margin: 0 0 16px;
+    }
+
+    p {
+      margin: 0 0 16px;
+    }
+
+    .tagset {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      justify-content: center;
+    }
+
+    .tag {
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .15);
+    }
+
+    .gallery {
+      display: grid;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .gallery-2 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: var(--radius);
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: space-between;
+      margin: 50px 0;
+    }
+
+   .btn {
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform .25s, box-shadow .25s, filter .25s;
+}
+
+/* Primary button */
+.btn-primary {
+  background: var(--grad);
+  color: #fff; /* white text is always visible */
+  border: none;
+}
+
+/* Hover state */
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124, 77, 255, .4),
+              0 4px 12px rgba(0, 194, 255, .3);
+  filter: brightness(1.1);
+}
+
+/* Secondary (non-gradient) button hover */
+.btn:not(.btn-primary):hover {
+  background: rgba(255, 255, 255, .08);
+}
+
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .grid-3, .grid-2, .gallery-2 {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="container">
+    <h1>🚀 Vending Machine & Smart Lockers </h1>
+    <p>Vending Machine and Smart Lockers app ui</p>
+    <div class="tagset">
+      <span class="tag">Vending</span>
+      <span class="tag">App</span>
+      <span class="tag">UI</span>
+    </div>
+    <div class="hero-img">
+      <img src="assets/vending/overview.jpg" alt="Job portal project overview screen">
+    </div>
+  </header>
+
+  <!-- Overview -->
+  <section class="container">
+    <h2>Project Overview</h2>
+    <p>UI for a smart vending machine and locker system aimed at providing users with a seamless, self-service experience. The interface needed to balance ease of use, speed, and clarity, ensuring users could quickly purchase products and access lockers without confusion.</p>
+    <h3>Problem Statement</h3>
+    <p>Traditional vending machines and locker systems often suffer from clunky interfaces, small displays, and poor navigation, leading to user frustration.</p>
+    <h3>Target Audience</h3>
+    <ul>
+      <li><strong>General Users:</strong>  Office workers, students, and commuters using vending machines for snacks, beverages, or essentials.</li>
+      <li><strong>Locker Users:</strong>  Customers who use lockers for package pickups, returns, or temporary storage.</li>
+    </ul>
+    <h3>Research & Insights</h3>
+    <p>I gathered insights from business analysts and competitor analysis of existing vending and locker systems.</p>
+    <ul>
+        <li>Users prefer touch-based, large-button UIs due to varied screen interaction environments.</li>
+        <li>Clear progress indicators reduce confusion in multi-step flows (e.g., payment + retrieval).</li>
+        <li>Users often need help prompts during locker access.</li>
+    </ul>
+
+  </section>
+
+  <!-- Design Process -->
+  <div class="grid grid-2 container">
+    <div>
+      <h2>Key Challenges & Design Decisions</h2>
+      <p><strong>Challenge:</strong> Users may have limited time in public spaces.</p>
+      <p><strong>Decision:</strong> Streamlined flows to max 3–4 taps for purchase/locker access.</p>
+      <p><strong>Challenge:</strong> Accessibility across different age groups.</p>
+      <p><strong>Decision:</strong> Used large touch zones, bold colors, and voice guidance options.</p>
+    </div>
+    <div>
+      
+      <!-- <h3>Prototyping</h3> -->
+      <div class="gallery" style="margin-top: 20px;">
+        <img src="assets/vending/wireframe.jpg" alt="Job portal design system preview">
+        <!-- <img src="assets/job portal/prototype.jpg" alt="Prototype mockup screen"> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Solution -->
+  <!-- <section class="container">
+    <h2>Final Outcome</h2>
+    <ul>
+        <li>Delivered a modern, user-friendly job portal that streamlined job search and applications.</li>
+        <li>Received positive feedback from stakeholders for its clarity, trust-building elements, and intuitive navigation.</li>
+        <li>Created a scalable design system that can be extended to mobile apps in future.</li>
+    </ul>
+   
+  </section> -->
+
+  <!-- Impact -->
+  <!-- <section class="container">
+    <h2>Impact & Results</h2>
+    <p>Share measurable outcomes, improvements, or testimonials...</p>
+  </section> -->
+
+  <!-- Navigation -->
+  <div class="container nav-links">
+    <a class="btn" href="index.html#projects">← Back to Portfolio</a>
+    <a class="btn btn-primary" href="case-study-flow-chart.html">Next Case Study →</a>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Anshita. Built with empathy & gradients.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

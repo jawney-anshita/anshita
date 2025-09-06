@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>[Your Name] – UI/UX Designer</title>
+  <meta name="description" content="UI/UX Designer portfolio resuming after a 6‑month maternity pause. Case studies, skills, and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0e0e12;
+      --card:#151521;
+      --muted:#a3a3b2;
+      --text:#f4f4f7;
+      --accent1:#7c4dff; /* purple */
+      --accent2:#00c2ff; /* teal */
+      --accent3:#ff7ac6; /* pink */
+      --ring: 0 6px 24px rgba(124,77,255,.35), 0 2px 8px rgba(0,194,255,.25);
+      --radius: 16px;
+      --maxw: 1120px;
+      --grad: linear-gradient(135deg, var(--accent1), var(--accent2));
+      --grad-soft: radial-gradient(1200px 600px at 20% -10%, rgba(124,77,255,.25), transparent 60%),
+                   radial-gradient(1200px 600px at 80% 110%, rgba(0,194,255,.20), transparent 60%);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--text);
+      background: var(--bg); overflow-x:hidden; letter-spacing:.15px;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{width:100%; max-width: var(--maxw); margin-inline:auto; padding: 0 20px}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px);
+      background: rgba(14,14,18,.55); border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.4px}
+    .brand-badge{
+      width:54px;height:54px;border-radius:12px;background:var(--grad);
+      display:grid;place-items:center; color:#fff; box-shadow:var(--ring);
+      font-family:Pacifico, cursive; font-size:38px; padding:10px;
+    }
+    nav ul{display:flex; gap:18px; list-style:none; padding:0; margin:0}
+    nav a{opacity:.9; padding:8px 12px; border-radius:10px; transition:.25s}
+    nav a:hover{background:rgba(255,255,255,.06); opacity:1}
+
+    /* Hero */
+    .hero{position:relative; overflow:hidden}
+    .hero::before{ /* soft gradient glows */
+      content:"";position:absolute; inset:-20% -20% 0 -20%; background:var(--grad-soft); z-index:-2;
+    }
+    .hero::after{ /* subtle doodle pattern – tiny footprints SVG */
+      content:""; position:absolute; inset:0; opacity:.06; z-index:-1; pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2' opacity='0.6'%3E%3Cpath d='M26 30c4-6 10-10 16-8 8 3 9 14 5 22-4 8-12 12-18 9-5-3-7-12-3-23z'/%3E%3Ccircle cx='22' cy='24' r='3'/%3E%3Cpath d='M90 86c4-6 10-10 16-8 8 3 9 14 5 22-4 8-12 12-18 9-5-3-7-12-3-23z'/%3E%3Ccircle cx='86' cy='80' r='3'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: 220px 220px; background-repeat: repeat;
+    }
+    .hero-inner{display:grid; grid-template-columns:1.15fr .85fr; gap:36px; align-items:center; padding:72px 0 84px}
+    .kicker{font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--muted)}
+    h1{font-size: clamp(32px, 4.6vw, 60px); line-height:1.05; margin:10px 0 12px}
+    .subtitle{font-size: clamp(16px, 1.6vw, 20px); color:#d9d9e6; max-width:60ch}
+    .cta{display:flex; gap:12px; margin-top:24px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:14px; font-weight:600; border:1px solid rgba(255,255,255,.12); transition:.25s; cursor:pointer}
+    .btn-primary{background:var(--grad); color:#0b0b0f; box-shadow:var(--ring); border:0}
+    .btn:hover{transform: translateY(-2px)}
+    .card-hero{background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.0)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:18px; box-shadow:0 10px 40px rgba(0,0,0,.25)}
+    .glass{background: rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius);}
+
+    .stats{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px}
+    .stat{padding:16px; text-align:center}
+    .stat h3{margin:0; font-size:24px}
+    .stat p{margin:6px 0 0; color:var(--muted); font-size:14px}
+
+    /* Sections */
+    section{padding:72px 0}
+    .section-title{font-size:28px; margin:0 0 12px}
+    .section-kicker{color:var(--muted); text-transform:uppercase; letter-spacing:.25em; font-weight:600; margin-bottom:6px}
+    .section-desc{color:#d9d9e6; max-width:70ch}
+
+    /* About + Journey */
+    .about{display:grid; grid-template-columns: 1.1fr .9fr; gap:36px}
+    .pill{display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); font-size:14px}
+
+    .timeline{position:relative; padding-left:28px;}
+    .timeline::before{content:""; position:absolute; left:10px; top:0; bottom:0; width:4px; border-radius:4px; background:linear-gradient(180deg, var(--accent1), var(--accent2));}
+    .milestone{position:relative; padding:14px 14px 14px 18px; margin-bottom:16px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:14px}
+    .milestone::before{content:""; position:absolute; left:-14px; top:18px; width:14px; height:14px; border-radius:50%; background:var(--grad); box-shadow:0 0 0 4px rgba(124,77,255,.25)}
+    .milestone small{color:var(--muted)}
+
+    /* Skills */
+    .chipset{display:flex; flex-wrap:wrap; gap:10px}
+    .chip{padding:10px 12px; border-radius:12px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.35); font-weight:600; font-size:14px}
+
+    .grid{display:grid; gap:20px}
+    .grid-3{grid-template-columns: repeat(3, 1fr)}
+    .grid-2{grid-template-columns: repeat(2, 1fr)}
+
+    /* Projects */
+    .project{display:flex; flex-direction:column; background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:16px; overflow:hidden}
+    .project header{position:relative; inset:initial; background:transparent; border:0}
+    .thumb{aspect-ratio: 16/10; background:linear-gradient(135deg, rgba(124,77,255,.35), rgba(0,194,255,.35)); display:grid; place-items:center; font-weight:700; letter-spacing:.2em}
+    .project-inner{padding:16px}
+    .tag{display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border:1px solid rgba(255,255,255,.12); border-radius:999px; font-size:12px; opacity:.9}
+    .project .meta{display:flex; gap:8px; flex-wrap:wrap; margin:12px 0}
+    .project p{color:#d9d9e6}
+    .project a.more{margin-top:auto; align-self:flex-start; padding:10px 12px; border-radius:12px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08)}
+
+    /* Testimonials */
+    .testi{padding:20px; border-radius:16px; background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08)}
+    .testi p{margin:0}
+    .testi .who{margin-top:10px; color:var(--muted)}
+
+    /* Contact */
+    .contact-card{display:grid; gap:14px; padding:20px; border-radius:16px; background:var(--card); border:1px solid rgba(255,255,255,.08)}
+    .contact-grid{display:grid; grid-template-columns: 1.2fr .8fr; gap:20px}
+    input, textarea{width:100%; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.12); border-radius:12px; color:var(--text); padding:12px 14px; font:inherit}
+    textarea{min-height:130px}
+    .submit{background:var(--grad); color:#0b0b0f; border:0}
+
+    footer{padding:40px 0; color:var(--muted); border-top:1px solid rgba(255,255,255,.06)}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-inner{grid-template-columns:1fr; padding:56px 0}
+      .about{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .stats{grid-template-columns: 1fr 1fr}
+      .contact-grid{grid-template-columns:1fr}
+    }
+
+
+
+    /* Highlighted Journey Timeline */
+.timeline {
+  position: relative;
+  padding-left: 40px; /* more space for thicker line */
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, var(--accent1), var(--accent2), var(--accent3));
+  background-size: 300% 300%;
+  animation: flow 6s ease-in-out infinite;
+  box-shadow: 0 0 12px rgba(124,77,255,.6);
+}
+
+@keyframes flow {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+.milestone {
+  position: relative;
+  padding: 16px 16px 16px 22px;
+  margin-bottom: 20px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 14px;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.milestone::before {
+  content: "";
+  position: absolute;
+  left: -26px;
+  top: 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--grad);
+  box-shadow: 0 0 12px rgba(124,77,255,.7), 0 0 20px rgba(0,194,255,.4);
+  border: 2px solid #fff;
+}
+
+.milestone:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0,0,0,.35), 0 0 12px rgba(124,77,255,.5);
+}
+
+  
+/* Journey fade-in animation */
+.milestone {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.milestone.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.name-highlight {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  display: inline-block;
+}
+
+.floating-icons {
+  display: inline-flex;
+  gap: 8px;
+  margin-left: 8px;
+  position: relative;
+}
+
+
+/*adding for image animation*/
+.floating-image {
+  animation: float 3s ease-in-out infinite, pulseGlow 4s ease-in-out infinite;
+}
+
+
+.creative {
+    animation-delay: 1.5s, 2s; /* stagger float & glow separately */
+}
+
+
+
+
+.floating-icons .icon {
+  display: inline-block;
+  border-radius: 50%;
+  padding: 4px;
+  animation: float 3s ease-in-out infinite, pulseGlow 4s ease-in-out infinite;
+}
+
+.floating-icons .baby {
+  font-size: 46px;
+  background: rgba(255,255,255,0.08);
+}
+
+.floating-icons .bottle {
+  font-size: 34px;
+  animation-delay: 1.5s, 2s; /* stagger float & glow separately */
+  background: rgba(255,255,255,0.1);
+}
+
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Pulsing + Blue → Pink Gradient Glow */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(0,132,255,0.6), 0 0 20px rgba(255,99,194,0.4);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(255,99,194,0.8), 0 0 38px rgba(0,132,255,0.9);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0,132,255,0.6), 0 0 20px rgba(255,99,194,0.4);
+  }
+}
+
+.header-logo {
+  height: 46px;   /* Adjust size */
+  width: auto;    /* Keep aspect ratio */
+  display: block;
+  position: absolute;
+  top: 14px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.highlights {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.highlight-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.highlight-pill {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #fff;
+  background: linear-gradient(135deg, #7c4dff00, #7c4dff00);
+  box-shadow: 0 0 18px rgba(124,77,255,0.6), 0 0 24px rgba(0,194,255,0.4);
+  animation: floaty 4s ease-in-out infinite, glowPulse 5s ease-in-out infinite;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.highlight-pill.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.highlight-label {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 15px rgba(124,77,255,0.6), 0 0 25px rgba(0,194,255,0.4); }
+  50% { box-shadow: 0 0 25px rgba(255,122,198,0.8), 0 0 35px rgba(0,194,255,0.7); }
+  100% { box-shadow: 0 0 15px rgba(124,77,255,0.6), 0 0 25px rgba(0,194,255,0.4); }
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Header / Nav -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-badge logo">A
+          <img src="logo_1.png" alt="Logo" class="header-logo">
+        </div>
+        <div>Anshita <span style="color:var(--muted); font-weight:600">• UI/UX & Senior Graphic Designer</span></div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#journey">Journey</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <div class="kicker">Designing Life & Interfaces</div>
+        <h1>
+          Hi, I’m 
+          <span class="name-highlight">Anshita Jawney</span>
+          <span class="floating-icons">
+            <span class="icon baby">👶🏻</span>
+            <span class="icon bottle">🍼</span>
+          </span>
+          — a crafting intuitive, inclusive, and beautiful digital + visual products.
+        </h1>
+        <p class="subtitle">I’m resuming my creative journey after a meaningful 6-month maternity pause 👶🏻🌸 — returning with deeper empathy, patience, and a renewed focus on human-centered design and compelling visual storytelling.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#projects">View Case Studies</a>
+          <a class="btn" href="#contact">Let’s Work Together <span class="icon" style="font-size: 32px;">👩🏻‍💻</span></a>
+        </div>
+        <div class="stats">
+          <div class="glass stat"><h3>6+ yrs</h3><p>Design Experience</p></div>
+          <div class="glass stat"><h3>50+</h3><p>Branding Projects</p></div>
+          <div class="glass stat"><h3>28</h3><p>Digital Projects Shipped</p></div>
+        </div>
+        <div class="highlights">
+  <div class="highlight-item">
+    <span class="highlight-pill">🎨</span>
+    <div class="highlight-label">Branding</div>
+  </div>
+  <div class="highlight-item">
+    <span class="highlight-pill">🧭</span>
+    <div class="highlight-label">UX Strategy</div>
+  </div>
+  <div class="highlight-item">
+    <span class="highlight-pill">✨</span>
+    <div class="highlight-label">Creative Direction</div>
+  </div>
+  <div class="highlight-item">
+    <span class="highlight-pill">📦</span>
+    <div class="highlight-label">Packaging</div>
+  </div>
+  <div class="highlight-item">
+    <span class="highlight-pill">🎞️</span>
+    <div class="highlight-label">Motion Graphics</div>
+  </div>
+</div>
+
+      </div>
+      <div>
+        <div class="card-hero">
+          <img alt="Featured UI mockups" src="image-2.png" style="width:100%; border-radius:12px; display:block"/>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:72px">
+            <img alt="Wireframes" class="floating-image design" src="image-design.png" style="width:100%; border-radius:10px"/>
+            <img alt="Prototype" class="floating-image creative" src="image-creative.png" style="width:100%; border-radius:10px"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container about">
+      <div>
+        <div class="section-kicker">About</div>
+        <h2 class="section-title">A designer who blends creativity, empathy, and strategy.</h2>
+        <p class="section-desc">I specialize as a <strong>UI/UX Designer</strong> and <strong>Senior Graphic Designer</strong>. My work bridges digital product design with visual storytelling. From intuitive user experiences to bold branding and impactful graphics, I create designs that connect with people and deliver measurable outcomes.</p>
+        <div style="margin-top:16px" class="pill">👶 Recently back from a 6-month maternity pause — with fresh perspectives on accessibility, clarity, and compassion in design.</div>
+        <div style="margin-top:16px" class="chipset">
+          <span class="chip">🧭 User Research</span>
+          <span class="chip">🧩 Design Systems</span>
+          <span class="chip">⚡ Prototyping</span>
+          <span class="chip">📱 Responsive UI</span>
+          <span class="chip">🧪 Usability Testing</span>
+          <span class="chip">📊 Product Thinking</span>
+          <span class="chip">🏷️ Branding</span>
+          <span class="chip">📦 Packaging</span>
+          <span class="chip">✏️ Illustration</span>
+          <span class="chip">🎞️ Motion Graphics</span>
+        </div>
+      </div>
+      <div>
+        <div class="section-kicker">Journey Map</div>
+        <h3 class="section-title">My story at a glance</h3>
+        <div class="timeline">
+          <div class="milestone"><strong>🎓 Degree</strong><br><small>Interaction Design — graduating with a focus on accessibility</small></div>
+          <div class="milestone"><strong>🏢 Apprenticeship</strong><br><small>Shadowed senior engineers • learned to deal in industry</small></div>
+          <div class="milestone"><strong>🚀 Startups</strong><br><small>Owned end-to-end flows • rapid prototyping • growth experiments</small></div>
+          <div class="milestone"><strong>🏬 Mid-size Teams</strong><br><small>Design systems • cross-functional rituals • measurable impact</small></div>
+          <div class="milestone"><strong>👶 Maternity Pause (6 mo)</strong><br><small>Perspective shift: empathy, clarity, prioritization</small></div>
+          <div class="milestone"><strong>✨ Returning Stronger</strong><br><small>Seeking product teams solving real user problems</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-kicker">Skills & Tools</div>
+      <h2 class="section-title">What I use to build & create</h2>
+      <p class="section-desc">From UX research and UI design to advanced graphic design, branding, and motion graphics.</p>
+
+      <div class="grid grid-3" style="margin-top:20px">
+        <!-- UI/UX -->
+        <div class="project">
+          
+          <div class="thumb">
+            <div class="grid grid-3" style="margin-top:20px">
+            <div class="" style="border: 0;">
+              <img src="Figma-logo.svg.png" alt="Figma" style="height: 48px; margin-left: auto; margin-right: auto;">
+            </div>
+            <div class="" style="border: 0;">
+              <img src="Adobe_XD_CC_icon.svg.png" alt="Adobe_XD_CC_icon" style="width: 48px; margin-left: auto; margin-right: auto;">
+            </div>
+            <div class="" style="border: 0;">
+              <img src="Adobe_Photoshop_CC_icon.svg.png" alt="Adobe_Photoshop_CC_icon" style="width: 48px; margin-left: auto; margin-right: auto;">
+            </div>
+
+          </div>
+            <div>FIGMA • ADOBE XD • PS</div></div>
+          <div class="project-inner">
+            <div class="meta"><span class="tag">🎨 Visual Design</span><span class="tag">🧭 UX</span></div>
+            <p>Design systems, tokens, component libraries, and collaborative specs.</p>
+          </div>
+        </div>
+        <div class="project">
+          <div class="thumb">
+             <div class="grid grid-3" style="margin-top:20px">
+            <div class="" style="border: 0;">
+              <img src="wireframe.png" alt="Figma" style="width: 48px; margin-left: auto; margin-right: auto;">
+            </div>
+            <div class="" style="border: 0;">
+              <img src="flow.png" alt="Adobe_XD_CC_icon" style="height: 58px; margin-left: auto; margin-right: auto;">
+            </div>
+            <div class="" style="border: 0;">
+              <img src="test.png" alt="Adobe_Photoshop_CC_icon" style="width: 48px; margin-left: auto; margin-right: auto;">
+            </div>
+
+          </div>
+            <div>WIRES • FLOWS • TESTS</div>
+          </div>
+          <div class="project-inner">
+            <div class="meta"><span class="tag">🧪 Research</span><span class="tag">🔁 Iteration</span></div>
+            <p>Journey maps, JTBD, moderated tests, and insight-driven decisions.</p>
+          </div>
+        </div>
+        <div class="project">
+          <div class="thumb">
+            <div class="grid grid-3" style="margin-top:20px">
+            <div class="" style="border: 0;">
+              <img src="HTML5_logo_and_wordmark.svg.png" alt="Figma" style="height: 48px; margin-left: auto; margin-right: auto;">
+            </div>
+            <div class="" style="border: 0;">
+              <img src="CSS3_logo_and_wordmark.svg.png" alt="Adobe_XD_CC_icon" style="height: 48px; margin-left: auto; margin-right: auto;">
+            </div>
+            <div class="" style="border: 0;">
+              <img src="js.png" alt="Adobe_Photoshop_CC_icon" style="height: 48px; margin-left: auto; margin-right: auto;">
+            </div>
+
+          </div>
+            <div>HTML • CSS • REACT</div>
+          </div>
+          <div class="project-inner">
+            <div class="meta"><span class="tag">🔗 Handoff</span><span class="tag">⚡ Proto</span></div>
+            <p>Interactive prototypes, dev-ready specs, and accessible UI patterns.</p>
+          </div>
+        </div>
+
+        <!-- Senior Graphic Design -->
+        <div class="project">
+          <div class="thumb">
+               <div class="grid grid-2" style="margin-top:20px">
+            <div class="" style="border: 0;">
+              <img src="branding.png" alt="Figma" style="width: 48px; margin-left: auto; margin-right: auto;">
+            </div>
+            <div class="" style="border: 0;">
+              <img src="indentity.png" alt="Adobe_XD_CC_icon" style="width: 48px; margin-left: auto; margin-right: auto;">
+            </div>
+          </div>
+            <div>BRANDING • IDENTITY</div>
+          </div>
+          <div class="project-inner">
+            <div class="meta"><span class="tag">🏷️ Branding</span><span class="tag">✨ Identity</span></div>
+            <p>Logo design, brand guidelines, and visual identity systems.</p>
+          </div>
+        </div>
+        <div class="project">
+          <div class="thumb">
+              <div class="grid grid-2" style="margin-top:20px">
+            <div class="" style="border: 0;">
+              <img src="printer_14964171.png" alt="Figma" style="height: 48px; margin-left: auto; margin-right: auto;">
+            </div>
+            <div class="" style="border: 0;">
+              <img src="package_2984739.png" alt="Adobe_XD_CC_icon" style="height: 48px; margin-left: auto; margin-right: auto;">
+            </div>
+          </div>
+            <div>PRINT • PACKAGING</div>
+          </div>
+          <div class="project-inner">
+            <div class="meta"><span class="tag">📰 Print</span><span class="tag">📦 Packaging</span></div>
+            <p>Posters, brochures, marketing materials, and product packaging.</p>
+          </div>
+        </div>
+        <div class="project">
+          <div class="thumb">
+            <div class="grid grid-2" style="margin-top:20px">
+            <div class="" style="border: 0;">
+              <img src="Adobe_Illustrator_CC_icon.svg.png" alt="Figma" style="height: 48px; margin-left: auto; margin-right: auto;">
+            </div>
+            <div class="" style="border: 0;">
+              <img src="micro-animation.png" alt="Adobe_XD_CC_icon" style="height: 48px; margin-left: auto; margin-right: auto;">
+            </div>
+          </div>
+            <div>ILLUSTRATION • MOTION</div>
+          </div>
+          <div class="project-inner">
+            <div class="meta"><span class="tag">✏️ Illustration</span><span class="tag">🎞️ Motion</span></div>
+            <p>Custom illustrations, typography, infographics, and motion graphics.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="chipset" style="margin-top:16px">
+        <span class="chip">Figma</span>
+        <span class="chip">Adobe XD</span>
+        <span class="chip">Photoshop</span>
+        <span class="chip">Illustrator</span>
+        <span class="chip">InDesign</span>
+        <span class="chip">After Effects</span>
+        <span class="chip">Premiere Pro</span>
+        <span class="chip">Canva</span>
+        <span class="chip">HTML</span>
+        <span class="chip">CSS</span>
+        <span class="chip">Bootstrap</span>
+        <span class="chip">React</span>
+        <span class="chip">WordPress</span>
+        <span class="chip">Wix</span>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-kicker">Case Studies</div>
+      <h2 class="section-title">Selected Work</h2>
+      <p class="section-desc">This case study demonstrates my end-to-end UI/UX process, from research and wireframing to interactive prototyping, ensuring usability and scalability.</p>
+
+      <div class="grid grid-3" style="margin-top:20px">
+        <!-- Project Card 1 -->
+        <article class="project">
+          <div class="thumb" style="text-align: center;"><img src="job_portal.jpg" style="width: 100%;"></div>
+          <div class="project-inner">
+            <h3>Job Portal for working abroad</h3>
+            <div class="meta">
+              <span class="tag">🔐 Job Portal</span>
+              <span class="tag">📈 Web Portal</span>
+              <!-- <span class="tag">🧪 Job seekers</span> -->
+            </div>
+            <p>A job portal website targeted towards Indian jobseekers aspiring to work abroad. </p>
+            <a class="more" href="case-study-job-portal.html">Read the case study →</a>
+          </div>
+        </article>
+        <!-- Project Card 2 -->
+        <article class="project">
+          <div class="thumb"><img src="Dispense.png" style="width: 100%;"></div>
+          <div class="project-inner">
+            <h3>Smart Vending Machine & Locker UI Design.</h3>
+            <div class="meta">
+              <span class="tag">📚 Vending</span>
+              <span class="tag">📱 Locker</span>
+              <span class="tag">🎯 UI</span>
+            </div>
+            <p>UI for a smart vending machine and locker system aimed at providing users with a seamless, self-service experience.</p>
+            <a class="more" href="case-study-vending-locker.html">Read the case study →</a>
+          </div>
+        </article>
+        <!-- Project Card 3 -->
+        <article class="project">
+          <div class="thumb"><img src="Flows_chart.jpg" style="width: 100%;"></div>
+          <div class="project-inner">
+            <h3>A feedback flow chart in healthcare systems</h3>
+            <div class="meta">
+              <span class="tag">📊 Flowchart</span>
+              <span class="tag">🧩 Healthcare</span>
+              <span class="tag">🧭 UX</span>
+            </div>
+            <p>Admin Feedback Response Flow for a feedback management module within a mental health platform.</p>
+            <a class="more" href="case-study-flow-chart.html">Read the case study →</a>
+          </div>
+        </article>
+
+        <article class="project">
+  <div class="thumb branding"><img src="wordpress.jpg" style="width: 100%;"></div>
+  <div class="project-inner">
+    <h3>WordPress Website</h3>
+    <div class="meta">
+      <span class="tag">🎨 Digital Presence</span>
+      <span class="tag">🚀 Non Profit Organization</span>
+    </div>
+    <p>Digital presence, improve visibility, and create a professional brand identity online.</p>
+    <a class="more" href="case-study-wordpress.html">Read the case study →</a>
+  </div>
+</article>
+
+<article class="project">
+  <div class="thumb packaging"><img src="SaaS Dashboard.png" style="width: 100%;"></div>
+  <div class="project-inner">
+    <h3>SaaS Dashboard</h3>
+    <div class="meta">
+      <span class="tag">📦 SaaS</span>
+      <span class="tag">🌿 Dashboard</span>
+    </div>
+    <p>Helping users monitor key metrics, manage workflows, and take quick actions through a clean and intuitive interface.</p>
+    <a class="more" href="case-study-dashboard.html">Read the case study →</a>
+  </div>
+</article>
+
+
+
+<article class="project">
+  <div class="thumb nonprofit"><img src="packaging.jpg" style="width: 100%;"></div>
+  <div class="project-inner">
+    <h3>Graphics, Branding and Motion Graphics</h3>
+    <div class="meta">
+      <span class="tag">💙 Graphics</span>
+      <span class="tag">🏷️ Branding</span>
+    </div>
+    <p>Refreshed logo, templates, and fundraising kits. Donations grew 35% with positive community feedback.</p>
+    <a class="more" href="case-study-graphics.html">Read the case study →</a>
+  </div>
+</article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey (vertical gradient line) -->
+  <!-- <section id="journey">
+    <div class="container">
+      <div class="section-kicker">Journey Map</div>
+      <h2 class="section-title">From learner → leader (and mom)</h2>
+      <p class="section-desc">A vertical journey with a two‑tone gradient line, celebrating each milestone along the way.</p>
+      <div class="grid grid-2" style="margin-top:20px">
+        <div>
+          <div class="timeline">
+            <div class="milestone"><strong>🎓 Interaction Design, B.Des</strong><br><small>Graduated top 10% with capstone on accessible forms</small></div>
+            <div class="milestone"><strong>🏢 Product Design Apprentice</strong><br><small>Learned rituals: standups, crits, and shipping MVPs</small></div>
+            <div class="milestone"><strong>🚀 Startup Product Designer</strong><br><small>0→1 features, rapid discovery with tight loops</small></div>
+            <div class="milestone"><strong>🏬 Mid‑size UX Designer</strong><br><small>Scaled design systems & cross‑platform patterns</small></div>
+            <div class="milestone"><strong>👶 Maternity Pause (6 months)</strong><br><small>Built empathy, clarified priorities, embraced simplicity</small></div>
+            <div class="milestone"><strong>✨ Return to Work</strong><br><small>Open to full‑time roles • ready to ship delightful products</small></div>
+          </div>
+        </div>
+        <div class="glass" style="padding:20px">
+          <h3 style="margin-top:0">Values I bring</h3>
+          <ul>
+            <li>🫶 Radical empathy for users and teammates</li>
+            <li>🧪 Experimentation mindset with clear success metrics</li>
+            <li>♿ Accessibility by default</li>
+            <li>🧭 Systems thinking and documentation</li>
+            <li>⏱️ Ruthless prioritization and calm execution</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Testimonials -->
+  <!-- <section>
+    <div class="container">
+      <div class="section-kicker">Kind Words</div>
+      <h2 class="section-title">Testimonials</h2>
+      <div class="grid grid-3" style="margin-top:20px">
+        <div class="testi">
+          <p>“[Your Name] is a force of clarity. Our onboarding went from clunky to frictionless.”</p>
+          <div class="who">— PM, Fintech Startup</div>
+        </div>
+        <div class="testi">
+          <p>“She balances speed and thoughtfulness. Research actually informed the roadmap.”</p>
+          <div class="who">— Head of Product, Ed‑tech</div>
+        </div>
+        <div class="testi">
+          <p>“A design system champion. Devs love her handoff quality and accessibility focus.”</p>
+          <div class="who">— Engineering Manager, SaaS</div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-kicker">Contact</div>
+      <h2 class="section-title">Let’s design something amazing ✨</h2>
+      <div class="contact-grid" style="margin-top:16px">
+        <form class="contact-card" onsubmit="event.preventDefault(); alert('Thanks! I will get back to you soon.')">
+          <input placeholder="Your name" required>
+          <input type="email" placeholder="Email" required>
+          <textarea placeholder="Tell me a bit about your project…" required></textarea>
+          <button class="btn submit" type="submit">Send Message</button>
+        </form>
+        <div class="contact-card">
+          <div class="pill">📬 Available for full‑time & freelance</div>
+          <div class="chipset" style="margin-top:10px">
+            <a class="chip" href="#">📧 anshitajawney@gmail.com</a>
+            <a class="chip" href="#">🔗 https://www.linkedin.com/in/anshita-jawney</a>
+            <!-- <a class="chip" href="#">💼 Behance</a>
+            <a class="chip" href="#">🎯 Dribbble</a>
+            <a class="chip" href="#">🌐 Website</a> -->
+          </div>
+          <p style="color:#d9d9e6">Prefer a quick call? I’m on IST. Happy to share a google meet link on request.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Anshita Jawney. Built with 💜 and 👶.</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        if(id.length>1){ e.preventDefault(); document.querySelector(id).scrollIntoView({behavior:'smooth'}); }
+      })
+    })
+  </script>
+
+
+  <script>
+  // Animate milestones on scroll
+  const milestones = document.querySelectorAll('.milestone');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // animate only once
+      }
+    });
+  }, { threshold: 0.2 });
+
+  milestones.forEach(milestone => observer.observe(milestone));
+</script>
+<script>
+  // Animate highlights on scroll or load
+  const highlights = document.querySelectorAll('.highlight-pill');
+  const highlightObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        highlightObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  highlights.forEach(h => highlightObserver.observe(h));
+
+  // Ensure highlights already in view on page load are shown
+  window.addEventListener('load', () => {
+    highlights.forEach(h => {
+      const rect = h.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        h.classList.add('visible');
+      }
+    });
+  });
+</script>
+</body>
+</html>
